@@ -111,7 +111,6 @@
     <Compile Include="ProgramUtil\CustomQueue.cs" />
     <Compile Include="ProgramUtil\CustomQueueBase.cs" />
     <Compile Include="ProgramUtil\LifeCycleManager.cs" />
-    <Compile Include="ProgramUtil\MailServiceModule.cs" />
     <Compile Include="ProgramUtil\EncryptModule.cs" />
     <Compile Include="ProgramUtil\ProgramProperties.cs" />
     <Compile Include="DataReceiver\AbstractAction.cs" />

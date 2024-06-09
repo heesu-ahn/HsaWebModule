@@ -20,7 +20,7 @@ namespace HsaWebModule
         /// 해당 애플리케이션의 주 진입점입니다.
         /// </summary>
         public static ILog log = null;
-        public static string programPath = Application.StartupPath;
+        public static string programPath = new DirectoryInfo(Application.StartupPath).Parent.Parent.FullName;//Application.StartupPath;
         public static string propertyConfigName = "HsaWebModule.Property";
         public static Dictionary<int,Dictionary<string,string>> Properties = new Dictionary<int, Dictionary<string, string>>();
         public static ProgramProperties keyCodeTable = null;

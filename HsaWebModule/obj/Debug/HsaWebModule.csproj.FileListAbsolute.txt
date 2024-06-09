@@ -175,3 +175,4 @@ C:\Users\anhes\source\repos\HsaWebModule\HsaWebModule\HsaWebModule\bin\Debug\web
 C:\Users\anhes\source\repos\HsaWebModule\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.csproj.CopyComplete
 C:\Users\anhes\source\repos\HsaWebModule\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.exe
 C:\Users\anhes\source\repos\HsaWebModule\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.pdb
+C:\Users\anhes\source\repos\HsaWebModule\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.csproj.AssemblyReference.cache

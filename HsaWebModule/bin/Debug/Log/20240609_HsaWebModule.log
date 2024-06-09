@@ -30,3 +30,32 @@
 2024-06-09 17:04:01,961 DEBUG HsaWebModule - 유효한 JWT 토큰입니다. 사용자 : hsaWebModule
 2024-06-09 17:04:01,964 DEBUG HsaWebModule - TestHttpServer:ProcessStart.
 2024-06-09 17:04:01,990 DEBUG HsaWebModule - HttpListenerService listenMessage
+2024-06-09 17:48:32,905 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:48:32,938 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:48:32,952 DEBUG HsaWebModule - Program Started
+2024-06-09 17:48:32,984 DEBUG HsaWebModule - 현재 사용자 정보 : hsaWebModule
+2024-06-09 17:50:45,856 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:50:45,879 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:50:45,888 DEBUG HsaWebModule - Program Started
+2024-06-09 17:51:24,688 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:51:24,703 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:51:24,720 DEBUG HsaWebModule - Program Started
+2024-06-09 17:51:24,831 DEBUG HsaWebModule - 현재 사용자 정보 : hsaWebModule
+2024-06-09 17:51:54,772 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:51:54,786 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:51:54,801 DEBUG HsaWebModule - Program Started
+2024-06-09 17:52:13,680 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:52:13,687 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:52:13,703 DEBUG HsaWebModule - Program Started
+2024-06-09 17:52:56,241 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:52:56,241 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:52:56,264 DEBUG HsaWebModule - Program Started
+2024-06-09 17:53:06,520 DEBUG HsaWebModule - 현재 사용자 정보 : hsaWebModule
+2024-06-09 17:53:20,075 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:53:20,091 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:53:20,108 DEBUG HsaWebModule - Program Started
+2024-06-09 17:53:20,124 DEBUG HsaWebModule - 현재 사용자 정보 : hsaWebModule
+2024-06-09 17:54:32,865 DEBUG HsaWebModule - 설정 파일 동일성 확인.
+2024-06-09 17:54:32,880 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 17:54:32,898 DEBUG HsaWebModule - Program Started
+2024-06-09 17:54:32,914 DEBUG HsaWebModule - 현재 사용자 정보 : hsaWebModule

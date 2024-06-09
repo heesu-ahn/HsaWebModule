@@ -192,6 +192,7 @@ namespace HsaWebModule.ProtocolModule
                 Program.audience = string.Format("{0}://{1}:{2}", https, IPAddress.Loopback.ToString(), Program.httpPort);
                 Console.WriteLine(Program.audience);
 
+                Program.wsUseSSL = true;
                 if (Program.wsUseSSL)
                 {
                     gServer = new WebSocketServer(port: gPort, secure: true);
