@@ -1,0 +1,15 @@
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.csproj.AssemblyReference.cache
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.csproj.GenerateResource.cache
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.csproj.CoreCompileInputs.cache
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.Form1.resources
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\Newtonsoft.Json.dll
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\Newtonsoft.Json.xml
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.csproj.CopyComplete
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\log4net.dll
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\log4net.xml
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\HsaWebModule.exe.config
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\HsaWebModule.exe
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\bin\Debug\HsaWebModule.pdb
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.Properties.Resources.resources
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.exe
+C:\Users\anhesu\source\repos\HsaWebModule\HsaWebModule\obj\Debug\HsaWebModule.pdb

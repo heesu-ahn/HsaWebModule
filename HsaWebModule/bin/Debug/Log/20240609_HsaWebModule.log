@@ -1,0 +1,32 @@
+﻿2024-06-09 16:59:13,208 DEBUG HsaWebModule - 
+2024-06-09 16:59:13,221 DEBUG HsaWebModule - HsaWebModule:Start.
+2024-06-09 16:59:13,221 DEBUG HsaWebModule - Program Started
+2024-06-09 16:59:13,269 DEBUG HsaWebModule - 현재 사용자 정보 : hsaWebModule
+2024-06-09 17:02:09,098 DEBUG HsaWebModule - JWT 발급 완료. : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZkNzAxN2FlYjY4MTRlMTRiM2FiYTZmM2MwODdlMjEwIiwidXNlck5hbWUiOiJoc2FXZWJNb2R1bGUiLCJleHAiOjE3MTc5MjM3MjgsImlzcyI6IndzOi8vMTI3LjAuMC4xOjQwMDAvIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMTo1MDAwIn0.gVEpYssThAn3WGm3j5dLsdLCi6A9vhdPyueeYXebJII
+2024-06-09 17:02:09,102 DEBUG HsaWebModule - JWT AES 암호화 완료. : LvLS1XzknLkxAyK3gKxmpz7h+PXo6CAfWJsIKmjQ+8wKwFaHJKTtUFT0NYlyMfYG9biCF4i/dDTHgzAELYiENmNqtoGhfQ1J/MSPkRLlLc/LuI8zSMzMAeY6K78zp/JtfaIXu3RAXQNm9nG9XL9hUuitC8BuKO2LwMB6WxO0f6bieRiRfTwdkAr/vpoSfG+Z2OZc7akvxOwILL9abyG+MRQPhvuMGqvWEJ2jFog+1r4VCwnKxQde9n3RX+MkryA65HsmMP8j4qIhSrCh0AUZR0r02t5U+BRHgjkQmRGv85wcrkAwaiF73F/KReHfW3pGKYM5i8AiJEHOnNO3YZOW9g1eGIterXoc53RYpTfERLXpcXR3/BvEG0HxpSPeoYpL
+2024-06-09 17:02:20,791 DEBUG HsaWebModule - Newtonsoft.Json.JsonReaderException: Invalid JavaScript property identifier character: }. Path 'Authorization', line 1, position 416.
+   위치: Newtonsoft.Json.JsonTextReader.ReadUnquotedPropertyReportIfDone(Char currentChar, Int32 initialPosition)
+   위치: Newtonsoft.Json.JsonTextReader.ParseUnquotedProperty()
+   위치: Newtonsoft.Json.JsonTextReader.ParseProperty()
+   위치: Newtonsoft.Json.JsonTextReader.ParseObject()
+   위치: Newtonsoft.Json.JsonTextReader.Read()
+   위치: Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateDictionary(IDictionary dictionary, JsonReader reader, JsonDictionaryContract contract, JsonProperty containerProperty, String id)
+   위치: Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   위치: Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   위치: Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   위치: Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   위치: Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   위치: Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   위치: Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   위치: HsaWebModule.ProtocolModule.WebSocketService.ServerService.OnMessage(MessageEventArgs e) 파일 C:\Users\anhes\source\repos\HsaWebModule\HsaWebModule\HsaWebModule\ProtocolModule\WebSocketService.cs:줄 65
+2024-06-09 17:03:14,724 DEBUG HsaWebModule - JWT 발급 완료. : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2YmNhZDJjYmQwZjRlNDhhYmU2M2MwODY5YmVjYmU5IiwidXNlck5hbWUiOiJoc2FXZWJNb2R1bGUiLCJleHAiOjE3MTc5MjM3OTQsImlzcyI6IndzOi8vMTI3LjAuMC4xOjQwMDAvIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMTo1MDAwIn0.vE9hlcqKO3PZgL1P-h8UVHyK2Jjj13UEqZi06YxACYA
+2024-06-09 17:03:14,724 DEBUG HsaWebModule - JWT AES 암호화 완료. : LvLS1XzknLkxAyK3gKxmpz7h+PXo6CAfWJsIKmjQ+8zwDHdU5NvasNjFjH2Ty9Ek+UO93bXDWaPIZ5DXG35OlqEPv8TI+VoPdJ56pqBj8uddsitbtFpumJ7aiNq1xL+hMId1Z03JBnIW3u/MHMxg9rFSc6LHAOYyCNaoDNqA+ZawHxjzMsC0xTDgrtqg9y4U5XzUcFo39vs23Z9ZUsVCN1T6XwTXWuHQPSe4k0NbwGnIy2pIAZxxudhQawPUQMWh7A9CHvMASHOY5Fj5ET7Hsl1s/C2LkF9G/0a2sw6GmruD3bJfLrcut5lQWgEHqyZFgYvInPLmrLPAZcBJU0gNecYoyOkcQb8ri67IvD9wNYkPgaRhq+HVnyWcHAxLVs8I
+2024-06-09 17:03:28,068 DEBUG HsaWebModule - JWT AES 복호화 완료. : {"id":"46bcad2cbd0f4e48abe63c0869becbe9","userName":"hsaWebModule","exp":1717923794,"iss":"ws://127.0.0.1:4000/","aud":"http://127.0.0.1:5000"}
+2024-06-09 17:03:28,073 DEBUG HsaWebModule - 인가되지 않은 사용자 입니다.
+2024-06-09 17:03:38,605 DEBUG HsaWebModule - JWT 발급 완료. : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM4MTMxZDJmYmQwMzQ1M2I5OTgxZmUxYTYwNWY4N2M2IiwidXNlck5hbWUiOiJoc2FXZWJNb2R1bGUiLCJleHAiOjE3MTc5MjM4MTgsImlzcyI6IndzOi8vMTI3LjAuMC4xOjQwMDAvIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMTo1MDAwIn0.daMkRNdQG2TP6hJQAxqrSzN45DAHeiwkseYx7xlauYM
+2024-06-09 17:03:38,606 DEBUG HsaWebModule - JWT AES 암호화 완료. : LvLS1XzknLkxAyK3gKxmpz7h+PXo6CAfWJsIKmjQ+8yOIyf0HrGZph2ZxOYKaVu7BdXoWuWi21TugCNmF7pLMJLVvCNllJUgXbzctEt2nDSxJ8wJ9Nd2sUes6R0egdAWSq/tbi5hTi+FkfnV/Nnu8Wj8VAVTYHEWImv6eKZkMGHoH8aVxikFOUw+y2LO84aqsGcH+YX3twy+11qhGKHQrXgWlT5yq1jHxMYJjJjTN0YxrrhYhFqStlYjq5j689EXt90t63aU8u4ZeyZ2geoa+lO/QgINss1Du83c/svgqdl29MpOhf6Ei0tOk8jS1TUzP9NAYa62PwqJNiQR7rkvqn/Zhe5jG7apheyu5BVJncJF8W2GvUsSfH883ES/f6o2
+2024-06-09 17:04:01,960 DEBUG HsaWebModule - JWT AES 복호화 완료. : {"id":"38131d2fbd03453b9981fe1a605f87c6","userName":"hsaWebModule","exp":1717923818,"iss":"ws://127.0.0.1:4000/","aud":"http://127.0.0.1:5000"}
+2024-06-09 17:04:01,961 DEBUG HsaWebModule - 비밀번호 대칭키 무결성 이상 없음 확인.
+2024-06-09 17:04:01,961 DEBUG HsaWebModule - 유효한 JWT 토큰입니다. 사용자 : hsaWebModule
+2024-06-09 17:04:01,964 DEBUG HsaWebModule - TestHttpServer:ProcessStart.
+2024-06-09 17:04:01,990 DEBUG HsaWebModule - HttpListenerService listenMessage

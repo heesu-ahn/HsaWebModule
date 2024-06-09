@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HsaWebModule" GeneratedClassName="HsaWebModule">
+  <Profiles />
+  <Settings>
+    <Setting Name="PropertyFileKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CurrentUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">안희수</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<properties>
+    <!--props00-->
+    <entry key="10100" prop="Log4jLevel">DEBUG</entry>
+    <!--props01-->
+    <entry key="10101" prop="WebSocketPort">4000</entry>
+    <!--props02-->
+    <entry key="10102" prop="HttpServerPort">5000</entry>
+    <!--props03-->
+    <entry key="10103" prop="TCPServerPort">1470</entry>
+    <!--props04-->
+    <entry key="10104" prop="UseWebSocketSSL">false</entry>
+    <!--props05-->
+    <entry key="10105" prop="UseSecureHttp">false</entry>
+    <!--props06-->
+    <entry key="10106" prop="UseAesEncrypt">true</entry>
+    <!--props07-->
+    <entry key="10107" prop="UseZipCompress">true</entry>
+    <!--props08-->
+    <entry key="10108" prop="UseSha256">true</entry>
+    <!--props09-->
+    <entry key="10109" prop="UseJWTEncrypt">true</entry>
+    <!--props10-->
+    <entry key="10110" prop="FileHash"></entry>
+</properties>

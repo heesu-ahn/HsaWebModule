@@ -1,0 +1,20 @@
+# : comments
+
+# no .a files
+# *.a
+
+# but do track lib.a, even though you're ignoring .a files above
+# !lib.a
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+HsaWebModule/HsaWebModule/bin
+HsaWebModule/HsaWebModule/obj
+
+# ignore all files in the build/ directory
+HsaWebModule/HsaWebModule/
+
+# ignore doc/notes.txt, but not doc/server/arch.txt
+HsaWebModule/HsaWebModule/*.txt
+
+# ignore all .pdf files in the doc/ directory
+# doc/**/*.pdf
