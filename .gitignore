@@ -9,9 +9,11 @@
 # only ignore the TODO file in the current directory, not subdir/TODO
 HsaWebModule/HsaWebModule/bin
 HsaWebModule/HsaWebModule/obj
+HsaWebModule/.vs
 
 # ignore all files in the build/ directory
 HsaWebModule/HsaWebModule/
+HsaWebModule/HsaWebModule/Log
 
 # ignore doc/notes.txt, but not doc/server/arch.txt
 HsaWebModule/HsaWebModule/*.txt
