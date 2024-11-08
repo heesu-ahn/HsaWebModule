@@ -39,7 +39,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex.Message);
+                Program.WriteLog(ex.Message,true);
             }
         }
 
@@ -52,7 +52,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex.Message);
+                Program.WriteLog(ex.Message, true);
             }
         }
         public void SetTimeOut(string id, InputData data) 
@@ -66,7 +66,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex.Message);
+                Program.WriteLog(ex.Message, true);
             }
         }
 
@@ -84,13 +84,13 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex.Message);
+                Program.WriteLog(ex.Message, true);
             }
         }
 
         public void Send(string socketId,InputData data)
         {
-            Program.log.Debug("Send : " +  data.inputData.strings.Count);
+            Program.WriteLog("Send : " +  data.inputData.strings.Count);
             data.inputData.strings.ForEach(message => {
                 ReceveMessageService receveMessage = new ReceveMessageService(socketId, serverUrl, message);
                 receveMessage.GetRequestMessage(socketId, receveMessage.rowData);

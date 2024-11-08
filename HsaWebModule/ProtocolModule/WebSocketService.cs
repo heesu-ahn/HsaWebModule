@@ -76,8 +76,8 @@ namespace HsaWebModule.ProtocolModule
                                         bool passwordVaildCheck = preCheck.PasswordVaildCheck(convertMessage, currentUser, userInfoData, socketId);
                                         if(passwordVaildCheck) 
                                         {
-                                            Program.log.Debug("비밀번호 대칭키 무결성 이상 없음 확인.");
-                                            Program.log.Debug(string.Format("유효한 JWT 토큰입니다. 사용자 : {0}",currentUser));
+                                            Program.WriteLog("비밀번호 대칭키 무결성 이상 없음 확인.");
+                                            Program.WriteLog(string.Format("유효한 JWT 토큰입니다. 사용자 : {0}",currentUser));
                                             Send("유효한 JWT 토큰입니다.");
                                             string serverUrl = returnJwt.Payload["aud"].ToString();
                                             Console.WriteLine("payload : " + JsonConvert.SerializeObject(returnJwt.Payload));
@@ -90,7 +90,7 @@ namespace HsaWebModule.ProtocolModule
                                     }
                                     else 
                                     {
-                                        Program.log.Debug("유효하지 않은 JWT 토큰입니다.");
+                                        Program.WriteLog("유효하지 않은 JWT 토큰입니다.");
                                         Send("유효하지 않은 JWT 토큰입니다.");
                                         this.Sessions.CloseSession(socketId);
                                     }
@@ -115,7 +115,7 @@ namespace HsaWebModule.ProtocolModule
                             }
                             else 
                             {
-                                Program.log.Debug("이미 사용이 만료된 JWT 토큰입니다.");
+                                Program.WriteLog("이미 사용이 만료된 JWT 토큰입니다.");
                                 Send("이미 사용이 만료된 JWT 토큰입니다.");
                                 this.Sessions.CloseSession(socketId);
                             }
@@ -124,7 +124,7 @@ namespace HsaWebModule.ProtocolModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Debug(ex);
+                    Program.WriteLog(ex,true);
                 }
             }
 
@@ -144,7 +144,7 @@ namespace HsaWebModule.ProtocolModule
                 string issuer = Program.issuer;
                 string audience = Program.audience;
                 string result = encryptModule.GenerateJWTToken(claimsIdentity, secretKey, issuer, audience);
-                Program.log.Debug("JWT 발급 완료. : " + result);
+                Program.WriteLog("JWT 발급 완료. : " + result);
                 string aesEncryptedJwt = Program.encryptModule.EncryptText(result);
                 if (connections != null && !connections.ContainsKey(socketId))
                 {
@@ -155,7 +155,7 @@ namespace HsaWebModule.ProtocolModule
                     connections[socketId] = JsonConvert.SerializeObject(new Dictionary<string, string>() { { "Authorization", "Bearer " + result } }); // jwt
                 }
                 Send(JsonConvert.SerializeObject(new Dictionary<string, string>(){{"Authorization","Bearer "+ aesEncryptedJwt } }));
-                Program.log.Debug("JWT AES 암호화 완료. : " + aesEncryptedJwt);
+                Program.WriteLog("JWT AES 암호화 완료. : " + aesEncryptedJwt);
             }
             protected override void OnClose(CloseEventArgs e)
             {
@@ -176,7 +176,7 @@ namespace HsaWebModule.ProtocolModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex);
+                Program.WriteLog(ex, true);
             }
         }
 
@@ -217,7 +217,7 @@ namespace HsaWebModule.ProtocolModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex);
+                Program.WriteLog(ex, true);
             }
         }
         static bool ValidateClientCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)

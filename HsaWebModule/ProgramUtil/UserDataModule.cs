@@ -56,7 +56,7 @@ namespace HsaWebModule.ProgramUtil
                 HsaWebModule.Default.CurrentUserName = defaultUserInfo.Keys.ToArray()[0];
                 HsaWebModule.Default.Save();
 
-                Program.log.Debug(string.Format("현재 사용자 정보 : {0}", HsaWebModule.Default.CurrentUserName));
+                Program.WriteLog(string.Format("현재 사용자 정보 : {0}", HsaWebModule.Default.CurrentUserName));
             }
             else
             {
@@ -89,7 +89,7 @@ namespace HsaWebModule.ProgramUtil
                     HsaWebModule.Default.CurrentUserName = defaultUserInfo.Keys.ToArray()[0];
                     HsaWebModule.Default.Save();
                 }
-                Program.log.Debug(string.Format("현재 사용자 정보 : {0}", HsaWebModule.Default.CurrentUserName));
+                Program.WriteLog(string.Format("현재 사용자 정보 : {0}", HsaWebModule.Default.CurrentUserName));
             }
         }
 

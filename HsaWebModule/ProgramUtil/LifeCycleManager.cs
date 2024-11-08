@@ -17,7 +17,7 @@ namespace HsaWebModule
             {
                 if (className == "" && !string.IsNullOrEmpty(value)) 
                 {
-                    Program.log.Debug($"{value}:ProcessStart.");
+                    Program.WriteLog($"{value}:ProcessStart.");
                     className = value;
                 }
             }

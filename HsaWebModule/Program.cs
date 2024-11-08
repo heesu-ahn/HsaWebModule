@@ -40,7 +40,8 @@ namespace HsaWebModule
 
         public delegate void runServiceModule();
         public static Dictionary<string, string> TestServerType = new Dictionary<string, string>();
-        
+        public static bool IsDebugMode { get; set; }
+
         [STAThread]
         static void Main()
         {
@@ -120,23 +121,28 @@ namespace HsaWebModule
                 Directory.CreateDirectory(programPath + "Log");
             }
 
+            IsDebugMode = isDebugging(); 
+
             Log4netManager log4NetManager = new Log4netManager(programPath + @"Log\", log4jLevel);
             log = log4NetManager.SetLogger();
-            log.Debug(fileHashResult); // 설정 파일 동일성 검사 결과
+
+            WriteLog($"is Degbug Mode : {IsDebugMode}.");
+            WriteLog(fileHashResult); // 설정 파일 동일성 검사 결과
+
 
             Application.EnableVisualStyles();            
             
             TestServerType.Add("Tcp", "TestTcpServer");
             TestServerType.Add("Http", "TestHttpServer");
             TestServerType.Add("WebSocket", "TestWebSocketServer");
-            log.Debug($"{Application.ProductName}:Start.");
+            WriteLog($"{Application.ProductName}:Start.");
             
             if (!checkExistLoad())
             {
-                log.Debug("Program is already running.");
+                WriteLog("Program is already running.");
                 return;
             }
-            log.Debug("Program Started");
+            WriteLog("Program Started");
 
             wsUseSSL = bool.Parse(Properties[keyCodeTable.UseWebSocketSSL].ToArray()[0].Value);
             runServiceModule serviceStart = new runServiceModule(WebSocketServiceStart); //Appication
@@ -177,7 +183,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                log.Debug(ex);
+                WriteLog(ex,true);
             }
         }
 
@@ -194,7 +200,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                log.Debug(ex);
+                WriteLog(ex, true);
             }
         }
 
@@ -214,6 +220,32 @@ namespace HsaWebModule
             }
             else isAvailable = false;
             return isAvailable;
+        }
+
+
+        public static bool isDebugging()
+        {
+            bool debugging = false;
+            WellAreWe(ref debugging);
+            return debugging;
+        }
+        [Conditional("DEBUG")]
+        private static void WellAreWe(ref bool debugging)
+        {
+            debugging = true;
+        }
+        public static void WriteLog(object msg,bool isError = false) 
+        {
+            if (IsDebugMode)
+            {
+                if(isError) log.Error(msg);
+                else log.Debug(msg);
+            }
+            else 
+            {
+                if (isError) log.Error(msg);
+                else log.Info(msg);
+            }
         }
     }
 }

@@ -27,13 +27,13 @@ namespace HsaWebModule.DataReceiver
                 getJwt = Program.encryptModule.DecryptText(getJwt);
                 if (savedJwt != getJwt)
                 {
-                    Program.log.Debug("JWT 정보가 변경 되었습니다.");
+                    Program.WriteLog("JWT 정보가 변경 되었습니다.");
                     return token;
                 }
                 else 
                 {
                     token = callbackService.DecryptJwt(getJwt,secretKey).Result;
-                    Program.log.Debug("JWT AES 복호화 완료. : " + JsonConvert.SerializeObject(token.Payload));
+                    Program.WriteLog("JWT AES 복호화 완료. : " + JsonConvert.SerializeObject(token.Payload));
                 }
             }
             return token;

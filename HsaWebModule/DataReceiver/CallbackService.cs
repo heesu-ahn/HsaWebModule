@@ -54,7 +54,7 @@ namespace HsaWebModule.DataReceiver
                 {
                     if (Program.webSocketService.gServer.WebSocketServices["/"].Sessions.ActiveIDs.Contains(socketId))
                     {
-                        Program.log.Debug("인가되지 않은 사용자 입니다.");
+                        Program.WriteLog("인가되지 않은 사용자 입니다.");
                         Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("인가되지 않은 사용자 입니다.", socketId);
                         Program.webSocketService.gServer.WebSocketServices["/"].Sessions.CloseSession(socketId);
                     }
@@ -66,7 +66,7 @@ namespace HsaWebModule.DataReceiver
                     {
                         if (Program.webSocketService.gServer.WebSocketServices["/"].Sessions.ActiveIDs.Contains(socketId))
                         {
-                            Program.log.Debug("사용자 정보가 없습니다.");
+                            Program.WriteLog("사용자 정보가 없습니다.");
                             Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("사용자 정보가 없습니다.", socketId);
                             Program.webSocketService.gServer.WebSocketServices["/"].Sessions.CloseSession(socketId);
                         }
@@ -77,7 +77,7 @@ namespace HsaWebModule.DataReceiver
                     {
                         if (Program.webSocketService.gServer.WebSocketServices["/"].Sessions.ActiveIDs.Contains(socketId))
                         {
-                            Program.log.Debug("인가되지 않은 사용자 입니다.");
+                            Program.WriteLog("인가되지 않은 사용자 입니다.");
                             Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("인가되지 않은 사용자 입니다.", socketId);
                             Program.webSocketService.gServer.WebSocketServices["/"].Sessions.CloseSession(socketId);
                         }
@@ -93,7 +93,7 @@ namespace HsaWebModule.DataReceiver
                     {
                         if (Program.webSocketService.gServer.WebSocketServices["/"].Sessions.ActiveIDs.Contains(socketId))
                         {
-                            Program.log.Debug("인가되지 않은 사용자 입니다.");
+                            Program.WriteLog("인가되지 않은 사용자 입니다.");
                             Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("인가되지 않은 사용자 입니다.", socketId);
                             Program.webSocketService.gServer.WebSocketServices["/"].Sessions.CloseSession(socketId);
                         }

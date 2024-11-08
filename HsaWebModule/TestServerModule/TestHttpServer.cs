@@ -104,7 +104,7 @@ namespace HsaWebModule
 
         private async void ListenMessage(HttpListener listener)
         {
-            Program.log.Debug("HttpListenerService listenMessage");
+            Program.WriteLog("HttpListenerService listenMessage");
             try
             {
                 httpListener.Start();
@@ -124,9 +124,9 @@ namespace HsaWebModule
 
                     if (request.HttpMethod != "")
                     {
-                        Program.log.Debug(string.Format("Method : {0}", request.HttpMethod));
+                        Program.WriteLog(string.Format("Method : {0}", request.HttpMethod));
 
-                        Program.log.Debug($"Recived request for {request.Url}");
+                        Program.WriteLog($"Recived request for {request.Url}");
                         if (request.HttpMethod == "OPTIONS") return;
                         if (request.RawUrl != "/HsaWebModule/Service.do") return;
 
@@ -150,7 +150,7 @@ namespace HsaWebModule
                         {
                             dictData.Add(key, nvcData.Get(key));
                         }
-                        Program.log.Debug(string.Format("parameter : {0}", paremeter));
+                        Program.WriteLog(string.Format("parameter : {0}", paremeter));
                         HttpListenerResponse response = context.Response;
                         response.StatusCode = 200;
                         response.ContentType = "Application/json";
@@ -231,17 +231,17 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex);
+                Program.WriteLog(ex, true);
             }
         }
         public TestHttpServer Destroy(TestHttpServer httpServer,bool timerRestart = true)
         {
-            Program.log.Debug($"Destroy:{httpServer.manager.className}.");
+            Program.WriteLog($"Destroy:{httpServer.manager.className}.");
             httpServer.manager.ProcessEnd = true;
 
             if (timerRestart)
             {
-                Program.log.Debug("웹소켓 타이머를 재구동 합니다.");
+                Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
                 Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", sessionId);
                 Console.WriteLine("");
             }

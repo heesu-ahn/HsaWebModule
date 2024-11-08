@@ -44,7 +44,7 @@ namespace HsaWebModule
                         //result = httpListenerService.LoadData(paramData).Result;
                     } 
                 }
-                Program.log.Debug(string.Format("session id : {0} TaskCompleted : {1}", socketId, result));
+                Program.WriteLog(string.Format("session id : {0} TaskCompleted : {1}", socketId, result));
             }
             catch (Exception ex)
             {

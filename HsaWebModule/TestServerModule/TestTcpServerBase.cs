@@ -11,7 +11,7 @@ namespace HsaWebModule
         }
         public void Dispose()
         {
-            Program.log.Debug($"{manager.ClassName} Class Dispose.");
+            Program.WriteLog($"{manager.ClassName} Class Dispose.");
         }
     }
 }

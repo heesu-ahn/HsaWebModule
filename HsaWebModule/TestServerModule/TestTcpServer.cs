@@ -243,11 +243,11 @@ namespace HsaWebModule
         }
         public TestTcpServer Destroy(TestTcpServer tcpServer,string sessionId)
         {
-            Program.log.Debug($"Destroy:{tcpServer.manager.className}.");
+            Program.WriteLog($"Destroy:{tcpServer.manager.className}.");
             tcpServer.manager.ProcessEnd = true;
             if (Program.webSocketService.gServer.WebSocketServices["/"].Sessions.ActiveIDs.Contains(sessionId))
             {
-                Program.log.Debug("웹소켓 타이머를 재구동 합니다.");
+                Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
                 Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", sessionId);
                 Console.WriteLine("");
             }
@@ -258,7 +258,7 @@ namespace HsaWebModule
                 {
                     Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", id);
                 }
-                Program.log.Debug("웹소켓 타이머를 재구동 합니다.");
+                Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
                 Console.WriteLine("");
             }
             return ((TestTcpServer)tcpServer.manager.ParentObject);

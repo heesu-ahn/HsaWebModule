@@ -14,8 +14,6 @@ namespace HsaWebModule.Screen
         {
             notifyIcon = new NotifyIcon();
             InitializeComponent();
-
-            
         }
 
         private void InitializeComponent()
@@ -36,7 +34,7 @@ namespace HsaWebModule.Screen
         }
         private void CloseApp(object sender, EventArgs e)
         {
-            Program.log.Debug("프로그램 종료");
+            Program.WriteLog("프로그램 종료");
             Program.trayIcon.notifyIcon.Dispose();
             Application.Exit();
         }

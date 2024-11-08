@@ -44,11 +44,11 @@ namespace HsaWebModule
             webSocketClient = new WebSocket(serverPath);
             webSocketClient.OnMessage += (sender, e) => {
                 string message = e.Data;
-                Program.log.Debug(message);
+                Program.WriteLog(message);
                 if (!string.IsNullOrEmpty(message) && message.Equals("Close."))
                 {
                     webSocketClient.Close();
-                    Program.log.Debug("웹소켓 타이머를 재구동 합니다.");
+                    Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
                     Console.WriteLine("");
                     Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", parentObj.sessionId);
                     parentObj.Destroy(parentObj.parent,false);
@@ -63,7 +63,7 @@ namespace HsaWebModule
                 if (Program.webSocketService.gServer.WebSocketServices["/"].Sessions.ActiveIDs.Contains(parentObj.sessionId))
                 {
                     CloseParentStream(this.parentObj.CloseStream);
-                    Program.log.Debug("TestWebSocketServer가 연결되었습니다.");
+                    Program.WriteLog("TestWebSocketServer가 연결되었습니다.");
                     Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("TestWebSocketServer가 연결되었습니다.", parentObj.sessionId);
                 }
             };

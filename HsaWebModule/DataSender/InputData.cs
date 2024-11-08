@@ -37,7 +37,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Debug(ex.Message);
+                Program.WriteLog(ex.Message,true);
             }
         }
     }
