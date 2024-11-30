@@ -40,7 +40,7 @@ namespace HsaWebModule
         public void TestServerOpen(string address, int port,string serviseName)
         {
             string serverPath = $"ws://{address}:{port}/{serviseName}";
-            Console.WriteLine(serverPath);
+            Program.WriteLog(serverPath);
             webSocketClient = new WebSocket(serverPath);
             webSocketClient.OnMessage += (sender, e) => {
                 string message = e.Data;
@@ -49,7 +49,7 @@ namespace HsaWebModule
                 {
                     webSocketClient.Close();
                     Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
-                    Console.WriteLine("");
+                    Program.WriteLog("");
                     Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", parentObj.sessionId);
                     parentObj.Destroy(parentObj.parent,false);
                 }

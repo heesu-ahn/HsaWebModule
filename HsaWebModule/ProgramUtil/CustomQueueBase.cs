@@ -26,7 +26,7 @@ namespace HsaWebModule
             if (stringValue.Length > stringLength)
             {
                 // changeQueueSize and intput String Split over 1024
-                if (useConsole) Console.WriteLine("ReSize CustomQueue.");
+                if (useConsole) Program.WriteLog("ReSize CustomQueue.");
                 SplitStringQueue(stringValue);
             }
             else
@@ -132,12 +132,12 @@ namespace HsaWebModule
         }
         public void AutoExtractQueue()
         {
-            if (useConsole) Console.WriteLine("Call AutoExtractQueue.");
+            if (useConsole) Program.WriteLog("Call AutoExtractQueue.");
             while (true)
             {
                 if (customQueue.ToString().Length == 0) break;
                 string dequeueStr = Dequeue();
-                if (!string.IsNullOrEmpty(dequeueStr) && useConsole) Console.WriteLine($"AutoExtractQueue:Dequeue [{dequeueStr}]");
+                if (!string.IsNullOrEmpty(dequeueStr) && useConsole) Program.WriteLog($"AutoExtractQueue:Dequeue [{dequeueStr}]");
             }
         }
     }

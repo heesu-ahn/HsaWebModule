@@ -88,7 +88,7 @@ namespace HsaWebModule
                 Port = port;
                 TcpSocket.Bind(serverEP);
                 TcpSocket.Listen(10);
-                Program.log.Info($"{parent.manager.className}:SocketOpen.");
+                Program.WriteLog($"{parent.manager.className}:SocketOpen.");
                 TcpSocket.BeginAccept(AcceptCallback,null);
             }
         }
@@ -106,11 +106,11 @@ namespace HsaWebModule
                 }
                 connectedClients.Clear();
                 TcpSocket.BeginAccept(AcceptCallback, null);
-                Program.log.Info($"{parent.manager.className}:SocketClose.");
+                Program.WriteLog($"{parent.manager.className}:SocketClose.");
             }
             catch (Exception ex)
             {
-                Program.log.Error(ex);
+                Program.WriteLog(ex, true);
             }
         }
 
@@ -127,16 +127,16 @@ namespace HsaWebModule
                 if (TcpSocket != null && TcpSocket.Connected)
                 {
                     TcpSocket.Disconnect(true);
-                    Program.log.Info($"{parent.manager.className}:SocketDisconnect.");
+                    Program.WriteLog($"{parent.manager.className}:SocketDisconnect.");
                 }
                 else 
                 {
-                    Program.log.Info($"{parent.manager.className} is not connected.");
+                    Program.WriteLog($"{parent.manager.className} is not connected.");
                 }
             }
             catch (Exception ex)
             {
-                Program.log.Error(ex);
+                Program.WriteLog(ex, true);
             }
         }
         public void SocketConnect()
@@ -147,20 +147,20 @@ namespace HsaWebModule
                 {
                     if (TcpSocket.IsBound)
                     {
-                        Program.log.Info($"{parent.manager.className} is Already Started.");
+                        Program.WriteLog($"{parent.manager.className} is Already Started.");
                     }
                     else 
                     {
                         IPEndPoint serverEP = new IPEndPoint(IPAddress.Any, Port);
                         TcpSocket.Bind(serverEP);
                         TcpSocket.Listen(10);
-                        Program.log.Info($"{parent.manager.className}:SocketConnect.");
+                        Program.WriteLog($"{parent.manager.className}:SocketConnect.");
                         TcpSocket.BeginAccept(AcceptCallback, null);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
             }
         }
@@ -187,7 +187,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Error(ex);
+                Program.WriteLog(ex, true);
             }
         }
         private void DataReceived(IAsyncResult ar)
@@ -202,7 +202,7 @@ namespace HsaWebModule
             string message = Encoding.UTF8.GetString(buffer);
             if (message.Equals("Quit"))
             {
-                Program.log.Info($"{parent.manager.className}:Restart.");
+                Program.WriteLog($"{parent.manager.className}:Restart.");
                 SocketClose(parent);
                 Destroy(parent,sessionId);
                 if (parent.parentObj != null) parent.parentObj.Destroy(parent.parentObj.parent,false);
@@ -210,7 +210,7 @@ namespace HsaWebModule
             else 
             {
                 string sendMessage = $"{parent.manager.className}:DataReceived. - {message}";
-                Program.log.Info(sendMessage);
+                Program.WriteLog(sendMessage);
                 sendMessage = "{\"loginIP\":\"127.0.0.1\",\"loginId\":\"myID\",\"Name\":\"myName\",\"NickName\":\"myNickName\",\"password\":\"myPw1234\",\"emaiAddress\":\"myEmail@gmail.com\",\"mobilePhone\":\"82-10-1234-5678\",\"nationality\":\"KOREA\",\"engishTextName\":\"myEnglshName\",\"koreanTextName\":\"나의 한국 이름\",\"gender\":\"Male\",\"dept\":\"laboratory\",\"birthDay\":\"9999-01-01\",\"employmentDate\":\"2222-01-01\",\"age\":\"100\",\"careear\":\"20\",\"weight\":\"55.5\",\"height\":\"166.6\"}";
                 queue.Enqueue(sendMessage);
                 // setSize
@@ -219,7 +219,7 @@ namespace HsaWebModule
 
                 if (sendMessage.Equals(concatString)) 
                 {
-                    Program.log.Info("SendMessage Validation is Success.");
+                    Program.WriteLog("SendMessage Validation is Success.");
                 }
 
                 SocketClose(parent);
@@ -237,7 +237,7 @@ namespace HsaWebModule
         }
         public void ExtractString(string value)
         {
-            if (useConsole) Console.WriteLine($"ExtractString >>> {value}");
+            if (useConsole) Program.WriteLog($"ExtractString >>> {value}");
             concatString += value;
             client.Send(Encoding.UTF8.GetBytes(value));
         }
@@ -249,7 +249,7 @@ namespace HsaWebModule
             {
                 Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
                 Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", sessionId);
-                Console.WriteLine("");
+                Program.WriteLog("");
             }
             else 
             {
@@ -259,7 +259,7 @@ namespace HsaWebModule
                     Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", id);
                 }
                 Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
-                Console.WriteLine("");
+                Program.WriteLog("");
             }
             return ((TestTcpServer)tcpServer.manager.ParentObject);
         }

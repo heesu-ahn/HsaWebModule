@@ -9,7 +9,7 @@ public class CustomQueue : CustomQueueBase
     {
         // defaultSize (20) stringQueue
         useConsole = console;
-        if (useConsole) Console.WriteLine($"Set_CustomQueue_DataSize : {stringLength} bytes * [{defaultSize}]");
+        if (useConsole) Program.WriteLog($"Set_CustomQueue_DataSize : {stringLength} bytes * [{defaultSize}]");
         customQueue = new StringBuilder(stringLength * defaultSize);
         curruntQueueSize = defaultSize;
     }
@@ -18,7 +18,7 @@ public class CustomQueue : CustomQueueBase
     {
         // CustomSize (size) stringQueue
         useConsole = console;
-        if (useConsole) Console.WriteLine($"Set CustomQueue__DataSize : {stringLength} bytes * [{size}]");
+        if (useConsole) Program.WriteLog($"Set CustomQueue__DataSize : {stringLength} bytes * [{size}]");
         customQueue = new StringBuilder(stringLength * size);
         curruntQueueSize = size;
     }
@@ -27,7 +27,7 @@ public class CustomQueue : CustomQueueBase
         // CustomSize (size) stringQueue
         useConsole = console;
         stringLength = readSize;
-        if (useConsole) Console.WriteLine($"Set_CustomQueue_DataSize : {stringLength} bytes * [{size}]");
+        if (useConsole) Program.WriteLog($"Set_CustomQueue_DataSize : {stringLength} bytes * [{size}]");
         customQueue = new StringBuilder(stringLength * size);
         curruntQueueSize = size;
     }

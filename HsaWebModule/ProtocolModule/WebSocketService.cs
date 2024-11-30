@@ -80,7 +80,7 @@ namespace HsaWebModule.ProtocolModule
                                             Program.WriteLog(string.Format("유효한 JWT 토큰입니다. 사용자 : {0}",currentUser));
                                             Send("유효한 JWT 토큰입니다.");
                                             string serverUrl = returnJwt.Payload["aud"].ToString();
-                                            Console.WriteLine("payload : " + JsonConvert.SerializeObject(returnJwt.Payload));
+                                            Program.WriteLog("payload : " + JsonConvert.SerializeObject(returnJwt.Payload));
                                             connections[socketId] = JsonConvert.SerializeObject(new Dictionary<string, string>() { { "serverUrl", serverUrl } });
 
                                             string address = String.Join(":", serverUrl.Split(':').ToArray().Take(2));
@@ -102,7 +102,7 @@ namespace HsaWebModule.ProtocolModule
                             if (!onMessagData.Contains("Authorization") && conn.Contains("serverUrl"))
                             {
                                 var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(conn);
-                                Console.WriteLine("serverUrl : " + data["serverUrl"]);
+                                Program.WriteLog("serverUrl : " + data["serverUrl"]);
                                 string serverUrl = data["serverUrl"].ToString();
 
                                 Dictionary<string, object> convertMessage = JsonConvert.DeserializeObject<Dictionary<string, object>>(onMessagData);
@@ -142,7 +142,7 @@ namespace HsaWebModule.ProtocolModule
                 };
                 EncryptModule encryptModule = new EncryptModule();
                 string issuer = Program.issuer;
-                string audience = Program.audience;
+                string audience = HsaWebModuleProperty.mainProperty.audience;
                 string result = encryptModule.GenerateJWTToken(claimsIdentity, secretKey, issuer, audience);
                 Program.WriteLog("JWT 발급 완료. : " + result);
                 string aesEncryptedJwt = Program.encryptModule.EncryptText(result);
@@ -188,17 +188,17 @@ namespace HsaWebModule.ProtocolModule
 
                 // Set HttpServerAddress
                 string https = Program.wsUseSSL ? "https" : "http";
-                
-                Program.audience = string.Format("{0}://{1}:{2}", https, IPAddress.Loopback.ToString(), Program.httpPort);
-                Console.WriteLine(Program.audience);
 
-                Program.wsUseSSL = true;
-                if (Program.wsUseSSL)
+                HsaWebModuleProperty.mainProperty.audience = string.Format("{0}://{1}:{2}", https, IPAddress.Loopback.ToString(), Program.httpPort);
+                Program.WriteLog(HsaWebModuleProperty.mainProperty.audience);
+
+                HsaWebModuleProperty.mainProperty.wsUseSSL = true;
+                if (HsaWebModuleProperty.mainProperty.wsUseSSL)
                 {
                     gServer = new WebSocketServer(port: gPort, secure: true);
                     
                     string certificatePath = Program.certFilePath + string.Format(@"\hsa.pfx");
-                    string pasword = "12345";
+                    string pasword = HsaWebModuleProperty.webSocketServerProperty.pasword;
                     
                     X509Certificate x509 = new X509Certificate(certificatePath, pasword);
                     X509Certificate2 x509Certificate = new X509Certificate2(x509);
@@ -212,7 +212,7 @@ namespace HsaWebModule.ProtocolModule
                     gServer = new WebSocketServer(port: gPort);
                 }
                 gServer.AddWebSocketService<ServerService>("/");
-                gServer.AddWebSocketService<TestServerService>("/TestWebSocketServer");
+                gServer.AddWebSocketService<TestServerService>($"/{HsaWebModuleProperty.webSocketServerProperty.serviseName}");
                 gServer.Start();
             }
             catch (Exception ex)
@@ -261,7 +261,7 @@ namespace HsaWebModule.ProtocolModule
                         foreach (var item in plainTextMessage.Split(',').ToArray())
                         {
                             messageStructure[idx++] = item;
-                            Console.WriteLine(item);
+                            Program.WriteLog(item);
                         }
                         string sessionId = messageStructure[0];
                         string sendMessage = "{\"type\":\"" + messageStructure[1] + "\",\"message\":\""+ messageStructure[2] + "\"}";

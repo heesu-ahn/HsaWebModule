@@ -116,7 +116,6 @@ namespace HsaWebModule.ProgramUtil
             resultStream.Close();
             entryStream.Close();
             result = Encoding.UTF8.GetString(decompressedByte);
-            //Console.WriteLine(result);
             return result;
         }
 
@@ -149,7 +148,7 @@ namespace HsaWebModule.ProgramUtil
                         }
                         File.WriteAllBytes(changeFilePath, compressedByte);
 
-                        Console.WriteLine(GetUserInfoData());
+                        Program.WriteLog(GetUserInfoData());
                         HsaWebModule.Default.CurrentUserName = updateCurrentUserName;
                         HsaWebModule.Default.Save();
                         changeUserInfo = null;

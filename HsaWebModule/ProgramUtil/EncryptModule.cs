@@ -33,7 +33,7 @@ namespace HsaWebModule.ProgramUtil
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Program.WriteLog(ex.Message,true);
             }
             return tokenString;
         }
@@ -46,7 +46,7 @@ namespace HsaWebModule.ProgramUtil
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenValidationParameters = new TokenValidationParameters()
             {
-                ValidAudiences = new string[]{Program.audience },
+                ValidAudiences = new string[]{HsaWebModuleProperty.mainProperty.audience },
                 ValidIssuers = new string[]{ Program.issuer },
                 IssuerSigningKey = signingKey
             };
@@ -114,7 +114,7 @@ namespace HsaWebModule.ProgramUtil
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Program.WriteLog(e.Message,true);
                 return encryptedString;
             }
         }
@@ -138,7 +138,7 @@ namespace HsaWebModule.ProgramUtil
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Program.WriteLog(e.Message,true);
                 return encryptedString;
             }
         }
@@ -278,7 +278,6 @@ namespace HsaWebModule.ProgramUtil
         {
             string hashData = "";
             string fileDirectory = string.IsNullOrEmpty(from) ? "" : from;
-            //Console.WriteLine(fileDirectory);
             if (Directory.Exists(fileDirectory))
             {
                 DirectoryInfo di = new DirectoryInfo(fileDirectory);

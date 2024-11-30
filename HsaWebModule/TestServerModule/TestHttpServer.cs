@@ -76,7 +76,7 @@ namespace HsaWebModule
             if (inUse == null)
             {
                 string serverPath = $"{address}:{port}/";
-                Console.WriteLine(serverPath);
+                Program.WriteLog(serverPath);
                 prefix.Add(serverPath);
                 foreach (string s in prefix)
                 {
@@ -92,7 +92,7 @@ namespace HsaWebModule
                 manager.HeaderWait = TimeSpan.FromMinutes(5);
 
                 string serverPath = $"{address}:{port}/";
-                Console.WriteLine(serverPath);
+                Program.WriteLog(serverPath);
                 prefix.Add(serverPath);
                 foreach (string s in prefix)
                 {
@@ -243,7 +243,7 @@ namespace HsaWebModule
             {
                 Program.WriteLog("웹소켓 타이머를 재구동 합니다.");
                 Program.webSocketService.gServer.WebSocketServices["/"].Sessions.SendTo("timerReStart.", sessionId);
-                Console.WriteLine("");
+                Program.WriteLog("");
             }
             return ((TestHttpServer)httpServer.manager.ParentObject);
         }
@@ -252,7 +252,7 @@ namespace HsaWebModule
         {
             if (stream != null && buffer != null && buffer.Length > 0) 
             {
-                Console.WriteLine("CloseStream From Other Class.");
+                Program.WriteLog("CloseStream From Other Class.");
                 stream.WriteAsync(buffer, 0, buffer.Length).Wait();
                 stream.Close();
             }

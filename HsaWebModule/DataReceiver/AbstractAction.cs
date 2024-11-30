@@ -48,7 +48,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Error(ex);
+                Program.WriteLog(ex,true);
             }
             return result;
         }

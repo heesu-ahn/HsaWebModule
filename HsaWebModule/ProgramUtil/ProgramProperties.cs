@@ -53,7 +53,7 @@ namespace HsaWebModule
             }
             string messageResourceXmlFilePath = configFileLocation + string.Format(@"\{0}.xml", resouceFileName);
 
-            Console.WriteLine("Create New ConfigFile");
+            Program.WriteLog("Create New ConfigFile");
 
             ProperyList keyValueList = new ProperyList();
             var fields = keyValueList.GetType().GetFields();
@@ -104,7 +104,7 @@ namespace HsaWebModule
 
         public void LoadXmlData()
         {
-            Console.WriteLine("Load ConfigFile");
+            Program.WriteLog("Load ConfigFile");
 
             ProperyList keyValueList = new ProperyList();
             var fields = keyValueList.GetType().GetFields();

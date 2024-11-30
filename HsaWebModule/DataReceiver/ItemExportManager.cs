@@ -39,7 +39,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Error(ex);
+                Program.WriteLog(ex,true);
             }
         }
     }
@@ -61,7 +61,7 @@ namespace HsaWebModule
             }
             catch (Exception ex)
             {
-                Program.log.Error(ex);
+                Program.WriteLog(ex,true);
             }
         }
         [Serializable]
@@ -228,7 +228,7 @@ namespace HsaWebModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
             }
             private void SetDValue(ref decimal lv, object obj)
@@ -239,7 +239,7 @@ namespace HsaWebModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
             }
             private void SetFValue(ref float lv, object obj)
@@ -250,7 +250,7 @@ namespace HsaWebModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
             }
             private void SetGlobalSetValVariables(object[] parameters) // 전역 변수 사용 구현 항목
@@ -282,7 +282,7 @@ namespace HsaWebModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
             }
             private List<Dictionary<string, object>> ItemsClone(Obj obj) // 지역 변수 사용 구현 항목
@@ -299,7 +299,7 @@ namespace HsaWebModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
                 return result;
             }
@@ -339,7 +339,7 @@ namespace HsaWebModule
                 }
                 catch (Exception ex)
                 {
-                    Program.log.Error(ex);
+                    Program.WriteLog(ex, true);
                 }
             }
             private void SuccessFailCallback(Func<bool> work, Action success, Action failure)

@@ -19,36 +19,39 @@ namespace HsaWebModule
         /// <summary>
         /// 해당 애플리케이션의 주 진입점입니다.
         /// </summary>
-        public static ILog log = null;
-        public static string programPath = new DirectoryInfo(Application.StartupPath).Parent.Parent.FullName;//Application.StartupPath;
-        public static string propertyConfigName = "HsaWebModule.Property";
-        public static Dictionary<int,Dictionary<string,string>> Properties = new Dictionary<int, Dictionary<string, string>>();
-        public static ProgramProperties keyCodeTable = null;
-        public static string log4jLevel = string.Empty;
-        public static bool wsUseSSL = false;
-        public static string certFilePath = string.Empty;
-        public static int wsPort = 0;
-        public static int httpPort = 0;
-        public static int tcpPort = 0;
+        public static ILog log;
+        public static string programPath = HsaWebModuleProperty.mainProperty.programPath;
+        public static string propertyConfigName = HsaWebModuleProperty.mainProperty.propertyConfigName;
+        public static Dictionary<int,Dictionary<string,string>> Properties = HsaWebModuleProperty.mainProperty.Properties;
+        public static ProgramProperties keyCodeTable = HsaWebModuleProperty.mainProperty.keyCodeTable;
+        public static string log4jLevel = HsaWebModuleProperty.mainProperty.log4jLevel;
+        public static bool wsUseSSL = HsaWebModuleProperty.mainProperty.wsUseSSL;
+        public static string certFilePath = HsaWebModuleProperty.mainProperty.certFilePath;
+        public static int wsPort = HsaWebModuleProperty.mainProperty.wsPort;
+        public static int httpPort = HsaWebModuleProperty.mainProperty.httpPort;
+        public static int tcpPort = HsaWebModuleProperty.mainProperty.tcpPort;
         public static WebSocketService webSocketService;
         public static UserDataModule userData;
-        public static EncryptModule encryptModule = new EncryptModule();
-        public static string issuer = string.Empty;
-        public static string audience = "http://127.0.0.1:8080";
+        public static EncryptModule encryptModule;
+        public static string issuer = HsaWebModuleProperty.mainProperty.issuer;
+        public static string audience = HsaWebModuleProperty.mainProperty.audience;
         public static TrayIcon trayIcon;
-        public static string defaultUserName = "hsaWebModule"; 
+        public static string defaultUserName = HsaWebModuleProperty.mainProperty.defaultUserName; 
 
         public delegate void runServiceModule();
-        public static Dictionary<string, string> TestServerType = new Dictionary<string, string>();
+        public static Dictionary<string, string> TestServerType;
         public static bool IsDebugMode { get; set; }
 
         [STAThread]
         static void Main()
         {
-            programPath = programPath + @"\";
+            HsaWebModuleProperty.mainProperty.TestServerType = new Dictionary<string, string>();
+            HsaWebModuleProperty.mainProperty.encryptModule = new EncryptModule();
+            HsaWebModuleProperty.mainProperty.programPath = programPath + @"\";
+
             string fileHashResult = string.Empty;
             string resouceFileName = propertyConfigName;
-            string messageResourceXmlFilePath = programPath + string.Format(@"Config\{0}.xml", resouceFileName);
+            string messageResourceXmlFilePath = $"{programPath}{string.Format(@"Config\{0}.xml", HsaWebModuleProperty.mainProperty.propertyConfigName)}";
             if (File.Exists(messageResourceXmlFilePath))
             {
                 // 있으면 기존 xml 파일에서 로드한다
@@ -111,11 +114,11 @@ namespace HsaWebModule
                 keyCodeTable = programProperties;
             }
 
-            wsPort = int.Parse(Properties[keyCodeTable.WebSocketPort].ToArray()[0].Value);
-            httpPort = int.Parse(Properties[keyCodeTable.HttpServerPort].ToArray()[0].Value);
-            tcpPort = int.Parse(Properties[keyCodeTable.TCPServerPort].ToArray()[0].Value);
+            HsaWebModuleProperty.mainProperty.wsPort = int.Parse(Properties[keyCodeTable.WebSocketPort].ToArray()[0].Value);
+            HsaWebModuleProperty.mainProperty.httpPort = int.Parse(Properties[keyCodeTable.HttpServerPort].ToArray()[0].Value);
+            HsaWebModuleProperty.mainProperty.tcpPort = int.Parse(Properties[keyCodeTable.TCPServerPort].ToArray()[0].Value);
+            HsaWebModuleProperty.mainProperty.log4jLevel = Properties[keyCodeTable.Log4jLevel].ToArray()[0].Value;
 
-            log4jLevel = Properties[keyCodeTable.Log4jLevel].ToArray()[0].Value;
             if (!Directory.Exists(programPath + "Log"))
             {
                 Directory.CreateDirectory(programPath + "Log");
@@ -124,7 +127,7 @@ namespace HsaWebModule
             IsDebugMode = isDebugging(); 
 
             Log4netManager log4NetManager = new Log4netManager(programPath + @"Log\", log4jLevel);
-            log = log4NetManager.SetLogger();
+            HsaWebModuleProperty.mainProperty.log = log4NetManager.SetLogger();
 
             WriteLog($"is Degbug Mode : {IsDebugMode}.");
             WriteLog(fileHashResult); // 설정 파일 동일성 검사 결과
@@ -144,11 +147,11 @@ namespace HsaWebModule
             }
             WriteLog("Program Started");
 
-            wsUseSSL = bool.Parse(Properties[keyCodeTable.UseWebSocketSSL].ToArray()[0].Value);
+            HsaWebModuleProperty.mainProperty.wsUseSSL = bool.Parse(Properties[keyCodeTable.UseWebSocketSSL].ToArray()[0].Value);
             runServiceModule serviceStart = new runServiceModule(WebSocketServiceStart); //Appication
             serviceStart();
             
-            trayIcon = new TrayIcon();
+            HsaWebModuleProperty.mainProperty.trayIcon = new TrayIcon();
             string userName = string.Empty;
             string userInfoData = new UserDataModule(certFilePath).GetUserInfoData();
             Dictionary<string, string> userInfo = JsonConvert.DeserializeObject<Dictionary<string, string>>(userInfoData);
@@ -236,6 +239,12 @@ namespace HsaWebModule
         }
         public static void WriteLog(object msg,bool isError = false) 
         {
+            if (log == null) 
+            {
+                Console.WriteLine(msg.ToString());
+                return;
+            }
+
             if (IsDebugMode)
             {
                 if(isError) log.Error(msg);
